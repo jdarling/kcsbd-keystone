@@ -1,0 +1,13 @@
+require('./users');
+require('./organisations');
+require('./posts');
+require('./postComments');
+require('./postCategories');
+require('./galleries');
+require('./enquiries');
+require('./links');
+require('./linkTags');
+require('./linkComments');
+require('./races');
+require('./raceComments');
+require('./raceTypes');

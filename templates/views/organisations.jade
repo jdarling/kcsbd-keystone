@@ -1,0 +1,25 @@
+extends ../layouts/default
+
+include ../mixins/organisation
+
+block intro
+	.page-intro: .container
+		h1 Organisations
+		p The organisations and people who are part of KCSBD. Should you be here? Join us!
+		.buttons
+			if !user
+				a(href='/join').btn.btn-primary Join KCSBD
+			a(href='/members').btn.btn-default Members
+			a(href='/members/mentors').btn.btn-default Mentors
+			a(href='/members/board').btn.btn-default Board Members
+
+block content
+	.container
+		.organisations
+			if organisations.length
+				each org, i in organisations
+					if i
+						hr
+					+organisations(org)
+			else
+				h3.text-muted Oops, nobody's here!

@@ -1,0 +1,28 @@
+{
+  "name": "KCSBD",
+  "version": "0.0.3",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdarling/kcsbd.git"
+  },
+  "dependencies": {
+    "keystone": "~0.1.55",
+    "async": "~0.2.9",
+    "underscore": "~1.5.2",
+    "csv": "0.3.6",
+    "dotenv": "0.0.3",
+    "passport": "~0.2.0",
+    "passport-github": "~0.1.5",
+    "passport-twitter": "~1.0.2",
+    "passport-facebook": "~1.0.2",
+    "moment": "~2.5.1"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
+  "scripts": {
+    "start": "server.js"
+  }
+}

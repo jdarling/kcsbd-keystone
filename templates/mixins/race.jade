@@ -1,0 +1,9 @@
+mixin race(race, mode)
+	.row
+		.col-sm-12
+			h3= race.title
+			.text-muted=race._.date.format('dddd D MMM YYYY')
+				if race.time
+					|  from #{race.time}
+			if race.description
+				p!= race.description

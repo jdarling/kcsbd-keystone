@@ -1,0 +1,37 @@
+extends ../layouts/default
+
+block intro
+	.page-intro: .container
+		h1 Board Members
+		p The mentors who are part of KCSBD. Should you be here? Join us!
+		.buttons
+			if !user
+				a(href='/join').btn.btn-primary Join KCSBD
+			a(href='/members/organisations').btn.btn-default Organisations
+			a(href='/members/mentors').btn.btn-default Mentors
+			a(href='/members').btn.btn-default Members
+
+block content
+	if members.length
+		.panel.panel-default: table.table.table-striped
+			thead.panel-heading
+				tr
+					th Name
+					th Jr Member
+					th Title
+					th.hidden-xs Contact
+			tbody
+				each member in members
+					tr
+						td
+							div= member.name.full
+							if member.twitter
+								a(href='https://twitter.com/' + member.twitter.replace('@', ''), target='_blank').text-small= member.twitter
+						td!= member.board.jr ? '<span class="fa fa-flag-checkered"></span>' : null
+						td= member.board.title
+						td.hidden-xs
+							if member.email
+								= member.email.replace('@', ' at ').replace(/\./i, ' dot ')
+	else
+		.text-center
+			h3.text-muted Oops, nobody's here!

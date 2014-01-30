@@ -4,7 +4,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/jdarling/kcsbd.git"
+    "url": "https://github.com/jdarling/kcsbd-keystone.git"
   },
   "dependencies": {
     "keystone": "~0.1.55",

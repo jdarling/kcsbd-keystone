@@ -11,3 +11,4 @@ require('./linkComments');
 require('./races');
 require('./raceComments');
 require('./raceTypes');
+require('./contacts');

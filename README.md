@@ -3,6 +3,8 @@ kcsbd.org website
 
 This site is the kcsbd.org website source code.  It was based on an example of a default [Keystone](http://keystonejs.com) application.
 
+See the site live at: http://kcsbd.org/
+
 ## License
 
 (The MIT License)

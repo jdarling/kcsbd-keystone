@@ -19,6 +19,8 @@ keystone.init({
 	'views': 'templates/views',
 	'view engine': 'jade',
 
+	'emails': process.env.EMAILS||'templates/emails',
+
 	'auto update': true,
 	'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/keystone-demo',
 
@@ -32,8 +34,10 @@ keystone.init({
 
 	'chartbeat property': process.env.CHARTBEAT_PROPERTY,
 	'chartbeat domain': process.env.CHARTBEAT_DOMAIN
-
 });
+
+keystone.Email.defaults.templateEngine = require('handlebars');
+keystone.Email.defaults.templateExt = 'handlebars';
 
 require('./models');
 
@@ -47,6 +51,10 @@ keystone.set('locals', {
 	chartbeat_property: keystone.get('chartbeat property'),
 	chartbeat_domain: keystone.get('chartbeat domain')
 });
+
+if(process.env.EMBEDLY_KEY){
+	keystone.set('embedly api key', process.env.EMBEDLY_KEY);
+}
 
 keystone.set('routes', require('./routes'));
 

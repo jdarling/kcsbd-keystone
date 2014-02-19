@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
 body,
 html {
 	height: 100%;
@@ -27,20 +29,31 @@ html {
 
 }
 
-
-
-
 // header
 .site-header {
-	background: url('/images/blue-header.jpg') center center no-repeat;
+	background: url('/images/header_bg.jpg') center top no-repeat;
 	background-size: cover;
-	height: 100px;
-	line-height: 100px;
+	height: 300px;
+	line-height: 259px;
 	text-align: center;
 
 	.logo {
 		display: inline-block;
 	}
+  
+  .logo-text{
+    font-family: 'Ubuntu', sans-serif;
+    position: relative;
+    left: 0px;
+    top: 128px;
+    text-align: left;
+    font-size: 40px;
+    color: white;
+    text-shadow: 2px 2px 6px black;
+    padding-left: 10px;
+    font-style: italic;
+    font-weight: bold;
+  }
 
 	@media (min-width: @breakpoint-sm) {
 	}

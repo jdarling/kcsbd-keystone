@@ -36,7 +36,8 @@ User.add({
 }, 'Notifications', {
 	notifications: {
 		posts: Boolean,
-		meetups: Boolean
+		links: Boolean,
+		enquiries: Boolean
 	}
 }, 'Mentoring', {
 	mentoring: {

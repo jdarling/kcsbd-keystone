@@ -8,5 +8,5 @@ mixin post(post)
 				.card__body
 					h1(itemprop='name').card__title= post.title
 					if post.publishedDate
-						time(datetime=post.publishedDate).text-muted.text-small #{post._.publishedDate.format('MMMM Do, YYYY')} 
+						time(datetime=post.publishedDate).text-muted.text-small #{post._.publishedDate.format('MMMM Do, YYYY')}
 					p(itemprop='description')!= post.content.brief

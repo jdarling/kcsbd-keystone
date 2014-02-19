@@ -1,9 +1,47 @@
 var keystone = require('keystone'),
-	Types = keystone.Field.Types;
+	async = require('async'),
+	Types = keystone.Field.Types
+	;
 
 var Enquiry = new keystone.List('Enquiry', {
 	nocreate: true
 });
+
+Enquiry.schema.methods.notifyAdmins = function(callback){
+	var enquiry = this;
+	var sendEmail = function(err, results){
+		if(err){
+			return callback(err);
+		}
+		async.each(results.admins, function(admin, done){
+			new keystone.Email('new-enquiry').send({
+				admin: admin.name.first || admin.name.full,
+				author: results.author ? results.author.name.full : 'Somebody',
+				enquiry: enquiry,
+				keystoneURL: 'http://kcsbd.org/keystone/enquiries/' + enquiry.id,
+				subject: 'New Enquiry on KCSBD.org'
+			}, {
+				to: admin,
+				from: {
+					name: 'KCSBD.org',
+					email: 'contact@kcsbd.org'
+				}
+			}, done);
+		}, function(err, info){
+			if(err){
+				console.log(err);
+			}
+			if(callback){
+				callback(err, info);
+			}
+		});
+	};
+	async.parallel({
+		admins: function(next){
+			keystone.list('User').model.find().where('board.member', true).exec(next);
+		}
+	}, sendEmail);
+};
 
 Enquiry.add({
 	name: { type: Types.Name, required: true },
